@@ -53,6 +53,22 @@ The GeoJSON data is passed to the `geojson` argument, and the data is passed int
 
 **Note** the `geojson` attribute can also be the URL to a GeoJSON file, which can speed up map rendering in certain cases.
 
+#### GeoJSON from a local file
+
+```python
+import json
+
+file = open('./myfile.geojson')
+geojson = json.load(file)
+
+fig = px.choropleth_mapbox(df,
+                           geojson=geojson,
+                           locations='fips',
+                           # ...
+                          )
+fig.show()
+```
+
 #### GeoJSON with `feature.id`
 
 Here we load a GeoJSON file containing the geometry information for US counties, where `feature.id` is a [FIPS code](https://en.wikipedia.org/wiki/FIPS_county_code).
